@@ -1,6 +1,6 @@
 
 # Knife (Linux) ![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/common-images/linux.jpg "Linux")  - Español
-![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Knife/images/logo.jpg "Knife")
+![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Knife/images/logo.jpg "Knife")
 Creador de la máquina: **MrKN16H7**
 ### Writeup por Tnr1112
 
@@ -37,7 +37,7 @@ Pero no hay suerte :(
 
 ### Web
 Esta es la web. En el código no hay nada sospechoso.
-![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Knife/images/website.jpg "Website")
+![](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/Easy-Facil/Linux/Knife/images/website.jpg "Website")
 
 ### Fuzzing
 Utilizamos `gobuster` para enumerar algún directorio, pero no hay suerte.
