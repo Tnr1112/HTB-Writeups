@@ -173,38 +173,38 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 # Webpages overview
 ## soccer.htb
 
-![](15-SoccerWebPage.png)
+![](images/15-SoccerWebPage.png)
 Nada acá, no hay user inputs. Simplemente esta página.
 
 ## soccer.htb/tiny
 
-![](15-tinyWebpage.png)
+![](images/15-tinyWebpage.png)
 
 ****
 # soccer.htb/tiny
 
-![](15-tinyWebpage.png)
+![](images/15-tinyWebpage.png)
 Encontramos un panel de autenticación de  `Tiny File Manager`.
 >**Tiny File Manager** es un administrador de archivos web fácil de usar y rápido. Te permite subir, editar y administrar archivos y carpetas vía navegador. La aplicación corre en PHP 5.5+. También es capaz de crear multiples usuarios, cada uno con su directorio propio.
 
-![](20-DefCredsTiny.png)
+![](images/20-DefCredsTiny.png)
 
 Probamos las credenciales por defecto: **admin:admin@123** o con **user:12345** y entramos
 
-![](20-Tiny1.png)
+![](images/20-Tiny1.png)
 
 Al intentar subir un archivo nos tira un error de que la carpeta no es escribible
 
-![](20-Tiny2.png)
+![](images/20-Tiny2.png)
 
 Pero si accedemos a tiny/uploads si podemos. Vamos a subir una **reverse shell** en php
 
-![](20-Tiny3.png)
+![](images/20-Tiny3.png)
 Ahora es cuestión de acceder al archivo mediante la ruta: `http://soccer.htb/tiny/uploads/revShell.php`
 
 Y obtenemos una **shell**
 
-![](20-RevShell.png)
+![](images/20-RevShell.png)
 
 ****
 # www-data
@@ -250,19 +250,19 @@ server {
 
 Encontramos `soc-player.htb`. La página es igual, solo que ahora hay más pestañas en el navbar
 
-![](25-Soc-playerWebPage.png)
+![](images/25-Soc-playerWebPage.png)
 
 Nos creamos una cuenta
 
-![](25-Soc-playerRegister.png)
+![](images/25-Soc-playerRegister.png)
 
 Y estamos dentro
 
-![](25-Soc-playerCheck1.png)
+![](images/25-Soc-playerCheck1.png)
 
 Si ponemos el número de ticket que nos indica, vemos que dice `Ticket Exists`.
 
-![](25-Soc-playerCheck2.png)
+![](images/25-Soc-playerCheck2.png)
 
 ## SQLI
 Leyendo un poco el código, vemos que se conecta a través de un **websocket** por el puerto **9091**.
@@ -467,7 +467,7 @@ ws.close()
 
 #### Demostración del timed based:
 
-![](25-TimedBased.png)
+![](images/25-TimedBased.png)
 
 ### **Boolean based**
 
@@ -584,7 +584,7 @@ ws.close()
 
 Como vemos tarda **10m 27s**, mucho menos que lo que tarda el timed based que por cada vez que encuentra un caracter tiene que esperar un tiempo determinado.
 
-![](25-BooleanBased.png)
+![](images/25-BooleanBased.png)
 
 ****
 # Player
