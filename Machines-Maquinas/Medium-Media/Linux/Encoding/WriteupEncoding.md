@@ -1,6 +1,6 @@
 # Encoding (Linux) ![Tux](https://github.com/Tnr1112/HTB-Writeups/blob/main/Machines-Maquinas/common-images/linux.jpg?raw=true)  - Español
 
-![banner](images/EncodingBanner.png)
+![banner](images/encodingBanner.png)
 Creador de la máquina: **[kavigihan](https://app.hackthebox.com/users/389926)**
 ### Writeup por **Tnr1112**
 
@@ -612,7 +612,7 @@ User svc may run the following commands on encoding:
 Efectivamente, puede ejecutar `/usr/bin/systemctl restart *` sin proporcionar ninguna contraseña.
 De vuelta, podemos ver cómo explotarlo [acá](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/sudo/sudo-systemctl-privilege-escalation/)
 
-Metemos el siguiente payload en `/etc/systemd/system/exploit.service` y lo ejecutamos con `sudo /usr/bin/systemctl restar exploit` previo habernos puesto en modo escucha por el puerto **4446**.
+Metemos el siguiente payload en `/etc/systemd/system/exploit.service` y lo ejecutamos con `sudo /usr/bin/systemctl restart exploit` previo habernos puesto en modo escucha por el puerto **4446**.
 
 ```
 [Unit]
